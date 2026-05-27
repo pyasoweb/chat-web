@@ -1,220 +1,384 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>El chat -el mejor Sistema</title>
-<style type="text/css">
-td img {display: block;}
-.Estilo4 {font-size: 12px}
-.Estilo5 {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	font-weight: bold;
-}
-.Estilo7 {font-size: 12px; font-family: Verdana, Arial, Helvetica, sans-serif; }
-body {
-	background-color: #F3F8FC;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 40px;
+            cursor: pointer;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        input.invalid {
+            border-color: #e74c3c;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .strength-weak {
+            color: #e74c3c;
+        }
+
+        .strength-medium {
+            color: #f39c12;
+        }
+
+        .strength-strong {
+            color: #27ae60;
+        }
+    </style>
 </head>
-
 <body>
-<table width="577" border="0" align="center" cellpadding="0" cellspacing="0">
-  <!-- fwtable fwsrc="Sin t�tulo" fwbase="web.jpg" fwstyle="Dreamweaver" fwdocid = "111144425" fwnested="0" -->
-  <tr>
-    <td><img src="spacer.gif" width="8" height="1" border="0" alt="" /></td>
-    <td><img src="spacer.gif" width="242" height="1" border="0" alt="" /></td>
-    <td><img src="spacer.gif" width="10" height="1" border="0" alt="" /></td>
-    <td><img src="spacer.gif" width="310" height="1" border="0" alt="" /></td>
-    <td><img src="spacer.gif" width="7" height="1" border="0" alt="" /></td>
-    <td><img src="spacer.gif" width="1" height="1" border="0" alt="" /></td>
-  </tr>
-  <tr>
-    <td colspan="5"><img name="web_r1_c1" src="web_r1_c1.jpg" width="577" height="95" border="0" id="web_r1_c1" alt="" /></td>
-    <td><img src="spacer.gif" width="1" height="95" border="0" alt="" /></td>
-  </tr>
-  <tr>
-    <td rowspan="2"><img name="web_r2_c1" src="web_r2_c1.jpg" width="8" height="362" border="0" id="web_r2_c1" alt="" /></td>
-    <td valign="top" background="web_r2_c2.jpg"><p>&nbsp;</p>
-      <table width="100%">
-        <tr>
-          <td> <p align="center" class="Estilo7">Bienvenidos Chat v2 Vip </p>
-            <p align="center" class="Estilo7">Nuevo Registro vip </p>
-          <p align="center" class="Estilo7">Ahora te registras y ya eres un Nuevo Usuario Vip . </p></td>
-        </tr>
-      </table>
-      <p align="center"><img src="elchat.jpg" width="120" height="120" /></p>
-      <p>&nbsp;</p></td>
-    <td rowspan="2"><img name="web_r2_c3" src="web_r2_c3.jpg" width="10" height="362" border="0" id="web_r2_c3" alt="" /></td>
-    <td valign="top" background="web_r2_c4.jpg"><table width="100%">
-      <tr>
-        <td width="32%"><div align="center" class="Estilo5">Registro Vip </div></td>
-        <td width="54%">&nbsp;</td>
-        <td width="14%">&nbsp;</td>
-      </tr>
-    </table>
-      <p>&nbsp;</p>
-      <form action="registro.php" method="post">
-
-        <div align="left">
-          <table width="100%">
-            <tr>
-              <td><table width="253" bgcolor="#FFFFFF">
-                <tr>
-                  <td width="58"><div align="center"> *Usuario:</div></td>
-                  <td width="183"><div align="center">
-                      <input name="nombre" type="text" id="nombre" size="15" placeholder="Nombre y Apellido" required="" />
-                  </div></td>
-                </tr>
-                <tr> </tr>
-                <tr>
-                  <td><div align="center">*Clave:</div></td>
-                  <td><div align="center">
-                      <input name="mensaje" type="password" id="mensaje" value="" size="15" placeholder="Password" required="" />
-                  </div></td>
-                </tr>
-                <tr>
-                  <td><div align="center" class="Estilo4">*Retype Password:</div></td>
-                  <td><div align="center">
-                      <input type="password" maxlength="25" size="15" placeholder="Retype password" name="cpassword1" />
-                  </div></td>
-                </tr>
-                <tr>
-                  <td><div align="center"><span class="Estilo7 Estilo4"><strong>Email:</strong></span></div>                    </td>
-                  <td><div align="center">
-                      <input id="email" type="email" name="email" placeholder="ejemplo@correo.com" required="" size="15" />
-					  
-                  </div></td>
-                </tr>
-                <tr>
-                  <td><div align="center">Lugar:</div></td>
-                  <td><div align="center">
-                    <input name="textfield" type="text" id="textfield" size="15" />
-                  </div></td>
-                </tr>
-                <tr>
-                  <td><div align="center">Edad:</div></td>
-                  <td><select name="select">
-                    <option selected="selected">-</option>
-                    <option>1900</option>
-                    <option>1901</option>
-                    <option>1902</option>
-                    <option>1903</option>
-                    <option>1904</option>
-                    <option>1905</option>
-                    <option>1906</option>
-                    <option>1907</option>
-                    <option>1908</option>
-                    <option>1909</option>
-                    <option>1910</option>
-                    <option>1911</option>
-                    <option>1912</option>
-                    <option>1913</option>
-                    <option>1914</option>
-                    <option>1915</option>
-                    <option>1916</option>
-                    <option>1917</option>
-                    <option>1918</option>
-                    <option>1919</option>
-                    <option>1920</option>
-                    <option>1921</option>
-                    <option>1922</option>
-                    <option>1923</option>
-                    <option>1924</option>
-                    <option>1925</option>
-                    <option>1926</option>
-                    <option>1927</option>
-                    <option>1928</option>
-                    <option>1929</option>
-                    <option>1930</option>
-                  </select>
-                    <label>
-                    <select name="select2">
-                      <option selected="selected">-</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                                                                                                                        </select>
-                    <select name="select3">
-                      <option selected="selected">-</option>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                      <option>13</option>
-                      <option>14</option>
-                      <option>15</option>
-                      <option>16</option>
-                      <option>17</option>
-                      <option>18</option>
-                      <option>19</option>
-                      <option>20</option>
-                      <option>21</option>
-                      <option>22</option>
-                      <option>23</option>
-                      <option>24</option>
-                      <option>25</option>
-                      <option>26</option>
-                      <option>27</option>
-                      <option>28</option>
-                      <option>29</option>
-                      <option>30</option>
-                    </select>
-                    </label></td>
-                </tr>
-                <tr>
-                  <td><div align="center">Sexo:</div></td>
-                  <td><label>
-                    <select name="select4">
-                      <option>Hombre</option>
-                      <option>Mujer</option>
-                      <option>Joven</option>
-                    </select>
-                  </label></td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td colspan="2"><div align="center">
-                      <input id="submit" type="submit" name="submit" value="Enviar" />
-                      <label>
-                      <input type="reset" name="Submit" value="Cancelar " />
-                      </label>
-                  </div></td>
-                </tr>
-              </table></td>
-            </tr>
-          </table>
+    <div class="container">
+        <h1>📝 Registro</h1>
+        
+        <div class="success-message" id="successMessage">
+            ¡Registro exitoso! Redirigiendo...
         </div>
-      </form>
-    </td>
-    <td rowspan="2"><img name="web_r2_c5" src="web_r2_c5.jpg" width="7" height="362" border="0" id="web_r2_c5" alt="" /></td>
-    <td><img src="spacer.gif" width="1" height="351" border="0" alt="" /></td>
-  </tr>
-  <tr>
-    <td><img name="web_r3_c2" src="web_r3_c2.jpg" width="242" height="11" border="0" id="web_r3_c2" alt="" /></td>
-    <td><img name="web_r3_c4" src="web_r3_c4.jpg" width="310" height="11" border="0" id="web_r3_c4" alt="" /></td>
-    <td><img src="spacer.gif" width="1" height="11" border="0" alt="" /></td>
-  </tr>
-</table>
+
+        <form id="registroForm" action="procesar_registro.php" method="POST" novalidate>
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input 
+                    type="text" 
+                    id="nombre" 
+                    name="nombre" 
+                    placeholder="Juan Pérez"
+                    required
+                >
+                <div class="error" id="errorNombre">El nombre es requerido y debe tener al menos 3 caracteres</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="tu@email.com"
+                    required
+                >
+                <div class="error" id="errorEmail">Ingresa un correo electrónico válido</div>
+            </div>
+
+            <div class="form-group">
+                <label for="usuario">Nombre de Usuario</label>
+                <input 
+                    type="text" 
+                    id="usuario" 
+                    name="usuario" 
+                    placeholder="juanperez123"
+                    required
+                >
+                <div class="error" id="errorUsuario">El usuario debe tener 4-20 caracteres (letras, números, guiones)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono (Opcional)</label>
+                <input 
+                    type="tel" 
+                    id="telefono" 
+                    name="telefono" 
+                    placeholder="+34 123 456 789"
+                >
+                <div class="error" id="errorTelefono">Teléfono inválido</div>
+            </div>
+
+            <div class="form-group">
+                <label for="pais">País</label>
+                <select id="pais" name="pais" required>
+                    <option value="">Selecciona un país</option>
+                    <option value="España">España</option>
+                    <option value="México">México</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Perú">Perú</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <div class="error" id="errorPais">Selecciona un país</div>
+            </div>
+
+            <div class="form-group password-container">
+                <label for="contrasena">Contraseña</label>
+                <input 
+                    type="password" 
+                    id="contrasena" 
+                    name="contrasena" 
+                    placeholder="••••••••"
+                    required
+                >
+                <span class="toggle-password" id="togglePassword">👁️</span>
+                <div class="password-strength" id="passwordStrength"></div>
+                <div class="error" id="errorContrasena">La contraseña debe tener al menos 8 caracteres</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmar_contrasena">Confirmar Contraseña</label>
+                <input 
+                    type="password" 
+                    id="confirmar_contrasena" 
+                    name="confirmar_contrasena" 
+                    placeholder="••••••••"
+                    required
+                >
+                <div class="error" id="errorConfirmar">Las contraseñas no coinciden</div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input 
+                        type="checkbox" 
+                        id="terminos" 
+                        name="terminos" 
+                        required
+                        style="width: auto; margin-right: 8px;"
+                    >
+                    Acepto los términos y condiciones
+                </label>
+                <div class="error" id="errorTerminos">Debes aceptar los términos y condiciones</div>
+            </div>
+
+            <button type="submit" class="btn">Registrarse</button>
+
+            <div class="login-link">
+                ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registroForm');
+        const passwordInput = document.getElementById('contrasena');
+        const togglePassword = document.getElementById('togglePassword');
+        const successMessage = document.getElementById('successMessage');
+
+        // Toggle mostrar/ocultar contraseña
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+
+        // Indicador de fortaleza de contraseña
+        passwordInput.addEventListener('input', () => {
+            const password = passwordInput.value;
+            const strengthDiv = document.getElementById('passwordStrength');
+            let strength = 0;
+
+            if (password.length >= 8) strength++;
+            if (password.length >= 12) strength++;
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[!@#$%^&*]/.test(password)) strength++;
+
+            if (password.length === 0) {
+                strengthDiv.innerHTML = '';
+            } else if (strength <= 2) {
+                strengthDiv.innerHTML = '<span class="strength-weak">Contraseña débil</span>';
+            } else if (strength <= 4) {
+                strengthDiv.innerHTML = '<span class="strength-medium">Contraseña media</span>';
+            } else {
+                strengthDiv.innerHTML = '<span class="strength-strong">Contraseña fuerte ✓</span>';
+            }
+        });
+
+        // Validaciones
+        const validaciones = {
+            nombre: (valor) => valor.trim().length >= 3,
+            email: (valor) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor),
+            usuario: (valor) => /^[a-zA-Z0-9_-]{4,20}$/.test(valor),
+            telefono: (valor) => valor === '' || /^[\d\s+()-]{7,}$/.test(valor),
+            pais: (valor) => valor !== '',
+            contrasena: (valor) => valor.length >= 8,
+            confirmar_contrasena: () => {
+                return passwordInput.value === document.getElementById('confirmar_contrasena').value;
+            },
+            terminos: () => document.getElementById('terminos').checked
+        };
+
+        // Validar campo
+        function validarCampo(nombre) {
+            const input = document.getElementById(nombre);
+            const error = document.getElementById(`error${nombre.charAt(0).toUpperCase() + nombre.slice(1)}`);
+            const esValido = validaciones[nombre](input.value || input.checked);
+
+            if (!esValido) {
+                input.classList.add('invalid');
+                error.style.display = 'block';
+            } else {
+                input.classList.remove('invalid');
+                error.style.display = 'none';
+            }
+
+            return esValido;
+        }
+
+        // Validación en tiempo real
+        Object.keys(validaciones).forEach(campo => {
+            const input = document.getElementById(campo);
+            if (input) {
+                input.addEventListener('blur', () => validarCampo(campo));
+                input.addEventListener('input', () => {
+                    if (input.classList.contains('invalid')) {
+                        validarCampo(campo);
+                    }
+                });
+            }
+        });
+
+        // Envío del formulario
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validar todos los campos
+            let valido = true;
+            Object.keys(validaciones).forEach(campo => {
+                if (!validarCampo(campo)) {
+                    valido = false;
+                }
+            });
+
+            if (!valido) return;
+
+            // Mostrar mensaje de éxito
+            successMessage.style.display = 'block';
+
+            // Enviar datos (el formulario seguirá su acción POST normal)
+            setTimeout(() => {
+                form.submit();
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
