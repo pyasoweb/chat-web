@@ -1,17 +1,9 @@
-<?php
-function obtenerIP() {
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        // IP desde internet compartido
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        // IP pasada por un proxy
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        // IP directa del visitante
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
+#php 7.x
+<?php if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    echo $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    echo $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    echo $ip = $_SERVER['REMOTE_ADDR'];
 }
-
-echo "La IP del visitante es: " . obtenerIP();
 ?>
