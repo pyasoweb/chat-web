@@ -1,60 +1,21 @@
-<?php
-
-function getRealIP()
+function get_real_ip()
 {
-
-   if( $_SERVER['HTTP_X_FORWARDED_FOR'] != '' )
-   {
-      $client_ip =
-         ( !empty($_SERVER['REMOTE_ADDR']) ) ?
-            $_SERVER['REMOTE_ADDR']
-            :
-            ( ( !empty($_ENV['REMOTE_ADDR']) ) ?
-               $_ENV['REMOTE_ADDR']
-               :
-               "unknown" );
-
-              $entries = split('[, ]', $_SERVER['HTTP_X_FORWARDED_FOR']);
-
-              reset($entries);
-              while (list(, $entry) = each($entries))
-              {
-         $entry = trim($entry);
-     if ( preg_match("/^([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)/", $entry, $ip_list) )
-     {
-        $private_ip = array(
-              '/^0\./',
-              '/^127\.0\.0\.1/',
-              '/^192\.168\..*/',
-              '/^172\.((1[6-9])|(2[0-9])|(3[0-1]))\..*/',
-              '/^10\..*/');
-
-        $found_ip = preg_replace($private_ip, $client_ip, $ip_list[1]);
-
-        if ($client_ip != $found_ip)
-        {
-           $client_ip = $found_ip;
-           break;
+    $ip=FALSE;
+         // IP del cliente o ninguno
+    if(!empty($_SERVER["HTTP_CLIENT_IP"])){
+        $ip = $_SERVER["HTTP_CLIENT_IP"];
+    }
+         // Dirección IP real de múltiples servidores de proxy (posiblemente falsificación), si no usa el agente, este campo está vacío
+    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ips = explode (", ", $_SERVER['HTTP_X_FORWARDED_FOR']);
+        if ($ip) { array_unshift($ips, $ip); $ip = FALSE; }
+        for ($i = 0; $i < count($ips); $i++) {
+            if (!eregi ("^(10│172.16│192.168).", $ips[$i])) {
+                $ip = $ips[$i];
+                break;
+            }
         }
-     }
-  }
+    }
+         // IP del cliente o (última) IP del servidor proxy
+    return ($ip ? $ip : $_SERVER['REMOTE_ADDR']);
 }
-else
-{
-  $client_ip =
-     ( !empty($_SERVER['REMOTE_ADDR']) ) ?
-        $_SERVER['REMOTE_ADDR']
-        :
-        ( ( !empty($_ENV['REMOTE_ADDR']) ) ?
-           $_ENV['REMOTE_ADDR']
-           :
-           "unknown" );
-}
-
-return $client_ip;
-
-}
-
-echo "Su Inúmero IP es: ".getRealIP();
-
-?> 
