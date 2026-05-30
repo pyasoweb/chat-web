@@ -1,3 +1,17 @@
+// crear un datos de escritura
+$vistor=array(
+    'time'=>date("Y-m-d H:i:s"),
+    '$ip'=>get_real_ip()
+);
+ // Leer datos guardados en el archivo TXT
+$res = file_get_contents("./log/log.json");
+var_dump($res);
+ // leer analizando en la matriz
+ $res_new = explode("\r\n",$res);
+var_dump($res_new); 
+file_put_contents("./log/log.json", json_encode($vistor,true)."\r\n",FILE_APPEND);
+
+
 <style type="text/css">
 <!--
 .Estilo4 {font-size: 12px}
