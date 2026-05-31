@@ -184,6 +184,7 @@ body {
 <html lang="es">
 <head>
   <meta charset="UTF-8"></p>
+	
 	if (empty($_SERVER["QUERY_STRING"])){
     $Fichero = "archivo.txt"; //nombre del fichero donde se guardan los informes.
     $ip = $_SERVER["REMOTE_ADDR"]; //guarda en la variable el ip 
