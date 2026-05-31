@@ -11,7 +11,7 @@ $contenido = $_SERVER["REMOTE_ADDR"]."\n";
 
 
 // Asegurarse primero de que el archivo existe y puede escribirse sobre el.
-if (is_writable($nombre_archivo)) {
+if (is_writable($prueba.txt)) {
 
     // En nuestro ejemplo estamos abriendo $nombre_archivo en modo de adicion.
     // El apuntador de archivo se encuentra al final del archivo, asi que
