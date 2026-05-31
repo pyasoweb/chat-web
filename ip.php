@@ -1,54 +1,36 @@
 <?php
-/**
- * Script para registrar la IP del visitante en un archivo TXT
- * Guarda: Fecha y hora (Y-m-d H:i:s) + IP
- * Maneja proxies y cabeceras comunes para obtener la IP real
- */
 
-// Ruta del archivo de log (fuera de la carpeta pública por seguridad)
-$logFile = __DIR__ . '/logs/visitas.txt';
+// SET DEFAULT TIMEZONE
+date_default_timezone_set("Europe/Berlin");
 
-// Función para obtener la IP real del cliente
-function getClientIP() {
-    $keys = [
-        'HTTP_CLIENT_IP',
-        'HTTP_X_FORWARDED_FOR',
-        'HTTP_X_FORWARDED',
-        'HTTP_FORWARDED_FOR',
-        'HTTP_FORWARDED',
-        'REMOTE_ADDR'
-    ];
-    foreach ($keys as $key) {
-        if (!empty($_SERVER[$key])) {
-            // En caso de múltiples IPs (proxies), tomar la primera
-            $ipList = explode(',', $_SERVER[$key]);
-            $ip = trim($ipList[0]);
-            if (filter_var($ip, FILTER_VALIDATE_IP)) {
-                return $ip;
-            }
-        }
-    }
-    return 'UNKNOWN';
-}
+// WRITE ONLY LAST RECEIVED IP TO FILE
+	$ip = $_SERVER['REMOTE_ADDR'] . ' - ' . date('d.m.Y - H:i:s');
+	file_put_contents('ip.txt', $ip);
 
-// Obtener IP y fecha actual
-$ip = getClientIP();
-$fecha = date('Y-m-d H:i:s');
 
-// Crear carpeta si no existe
-$dir = dirname($logFile);
-if (!is_dir($dir)) {
-    mkdir($dir, 0755, true);
-}
+/* WRITE LAST IP IN A NEW LINE AT THE END OF THE FILE
+	$ip = "$_SERVER[REMOTE_ADDR]" . " - " . date('Y-m-d H:i:s');
+	file_put_contents('ip.txt', $ip . PHP_EOL, FILE_APPEND);
+*/
 
-// Registrar en el archivo
-$linea = $fecha . " - " . $ip . PHP_EOL;
-try {
-    file_put_contents($logFile, $linea, FILE_APPEND | LOCK_EX);
-} catch (Exception $e) {
-    error_log("Error al escribir en el log: " . $e->getMessage());
-}
+/* WRITE LAST IP IN A NEW LINE AT THE *TOP* OF THE FILE
+	if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    	$ip = $_SERVER['HTTP_CLIENT_IP'];
+	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    	$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	} else {
+    	$ip = $_SERVER['REMOTE_ADDR'];
+	}
 
-// (Opcional) Mostrar IP al visitante
-echo "Tu IP es: " . htmlspecialchars($ip);
+	$prepend = $ip . ' - ' . date('d.m.Y - H:i:s') . "\n";
+	$file = 'ip.txt';
+	$filecontents = file_get_contents($file);
+	file_put_contents($file, $prepend . $filecontents);
+
+	// SHOW WHAT IS WRITTEN TO FILE (DEBUGGING ONLY)
+	echo '<pre>';
+	echo $filecontents;
+	echo '</pre>';
+*/
+
 ?>
