@@ -17,16 +17,16 @@ if (is_writable($nombre_archivo)) {
     // El apuntador de archivo se encuentra al final del archivo, asi que
     // alli es donde ira $contenido cuando llamemos fwrite().
     if (!$gestor = fopen($nombre_archivo, 'a')) {
-         echo "No se puede abrir el archivo ($nombre_archivo)";
+         echo "No se puede abrir el archivo ($prueba.txt)";
          exit;
     }
 
     // Escribir $contenido a nuestro arcivo abierto.
     if (fwrite($gestor, $contenido) === FALSE) {
-        echo "No se puede escribir al archivo ($nombre_archivo)";
+        echo "No se puede escribir al archivo ($prueba.txt)";
         exit;
     }
     
-    echo "&Eacute;xito, se escribi&oacute; ($contenido) al archivo ($nombre_archivo)";
+    echo "&Eacute;xito, se escribi&oacute; ($contenido) al archivo ($prueba.txt)";
     
     fclose($gestor);
