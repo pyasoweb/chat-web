@@ -16,7 +16,7 @@ if (is_writable($prueba.txt)) {
     // En nuestro ejemplo estamos abriendo $nombre_archivo en modo de adicion.
     // El apuntador de archivo se encuentra al final del archivo, asi que
     // alli es donde ira $contenido cuando llamemos fwrite().
-    if (!$gestor = fopen($nombre_archivo, 'a')) {
+    if (!$gestor = fopen($prueba.txt, 'a')) {
          echo "No se puede abrir el archivo ($prueba.txt)";
          exit;
     }
@@ -30,3 +30,8 @@ if (is_writable($prueba.txt)) {
     echo "&Eacute;xito, se escribi&oacute; ($contenido) al archivo ($prueba.txt)";
     
     fclose($gestor);
+
+} else {
+    echo "No se puede escribir sobre el archivo $prueba.txt";
+}
+?>
